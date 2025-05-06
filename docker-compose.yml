@@ -17,7 +17,6 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
-
   gitea:
     image: gitea/gitea:latest
     container_name: gitea
@@ -33,15 +32,16 @@ services:
       - GITEA__admin__USER=admin
       - GITEA__admin__PASSWORD=admin
       - GITEA__admin__EMAIL=admin@example.com
-#    ports:
-#      - "3000:3000"
-#      - "2222:22"
+    #    ports:
+    #      - "3000:3000"
+
+    #      - "2222:22"
+
     volumes:
       - gitea_data:/data
     networks:
       - rapidenv
     restart: always
-
   komet:
     build:
       context: .
@@ -63,7 +63,6 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
-
   nginx:
     build:
       context: .
@@ -90,14 +89,13 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
-
+    image: sidahal2018/nginx:latest
 volumes:
   nexus-data:
   komet-data:
   nginx-logs:
     driver: local
   gitea_data:
-
 networks:
   rapidenv:
     driver: bridge
